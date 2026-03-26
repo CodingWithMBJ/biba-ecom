@@ -1,5 +1,6 @@
 import {
   faBarsStaggered,
+  faCartShopping,
   faMoon,
   faPersonBreastfeeding,
   faSun,
@@ -8,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { useTheme } from "../hooks/useTheme";
 import type { User } from "firebase/auth";
+import useCart from "../hooks/useCart";
 
 type HeaderProps = {
   handleMenuToggle: () => void;
@@ -16,19 +18,31 @@ type HeaderProps = {
 
 const Header = ({ handleMenuToggle }: HeaderProps) => {
   const { toggleTheme, isDark } = useTheme();
+  const { cartItems } = useCart();
 
   const currentThemeIcon = isDark ? faMoon : faSun;
+  const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+
   return (
     <header className="header">
-      <button className="menuBtn" onClick={handleMenuToggle}>
+      <button type="button" className="menuBtn" onClick={handleMenuToggle}>
         <FontAwesomeIcon icon={faBarsStaggered} className="menuBtn-icon" />
       </button>
-      <Link to={"/"} className="logo-link">
+
+      <Link to="/" className="logo-link">
         <FontAwesomeIcon icon={faPersonBreastfeeding} className="logo-icon" />
       </Link>
-      <button className={``} onClick={toggleTheme}>
-        <FontAwesomeIcon icon={currentThemeIcon} className="" />
-      </button>
+
+      <div className="action-bar">
+        <Link to="/cart" className="cart-btn">
+          <FontAwesomeIcon icon={faCartShopping} className="cart-icon" />
+          <span className="cart-icon-total">{cartCount}</span>
+        </Link>
+
+        <button type="button" className="theme-btn" onClick={toggleTheme}>
+          <FontAwesomeIcon icon={currentThemeIcon} />
+        </button>
+      </div>
     </header>
   );
 };

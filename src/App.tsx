@@ -6,6 +6,9 @@ import Dashboard from "./pages/Dashboard";
 import { useEffect, useState } from "react";
 import { onAuthStateChanged, type User } from "firebase/auth";
 import { auth } from "./services/firebaseConfig";
+import CartProvider from "./context/CartContext";
+import ShoppingCart from "./pages/ShoppingCart";
+import Checkout from "./pages/Checkout";
 
 const App = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -17,17 +20,21 @@ const App = () => {
     return () => unsubcribe();
   }, []);
   return (
-    <BrowserRouter>
-      <Routes>
-        {!user ? (
-          <Route index element={<WelcomeScreen />} />
-        ) : (
-          <Route element={<PageLayout user={user} />}>
-            <Route path="/" element={<Dashboard />} />
-          </Route>
-        )}
-      </Routes>
-    </BrowserRouter>
+    <CartProvider>
+      <BrowserRouter>
+        <Routes>
+          {!user ? (
+            <Route index element={<WelcomeScreen />} />
+          ) : (
+            <Route element={<PageLayout user={user} />}>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/cart" element={<ShoppingCart />} />
+              <Route path="/checkout" element={<Checkout />} />
+            </Route>
+          )}
+        </Routes>
+      </BrowserRouter>
+    </CartProvider>
   );
 };
 export default App;

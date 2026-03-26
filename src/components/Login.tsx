@@ -11,7 +11,7 @@ const Login = () => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      alert("Logged in Successfully");
+      // alert("Logged in Successfully");
     } catch (err: any) {
       setError(err.message);
     }

@@ -1,16 +1,8 @@
-export type Product = {
-  id: number;
-  title: string;
-  image: string;
-  description: string;
-  price: number;
-  rate: number;
-  category: string;
-};
+import type { Product } from "../types/products";
 
-const Product: Product[] = [
+const products: Product[] = [
   {
-    id: 1,
+    id: "1",
     title: "product 1",
     image: "https://blocks.astratic.com/img/general-img-landscape.png",
     description: "new product",
@@ -19,7 +11,7 @@ const Product: Product[] = [
     category: "baby bottle",
   },
   {
-    id: 2,
+    id: "2",
     title: "product 2",
     image: "https://blocks.astratic.com/img/general-img-landscape.png",
     description: "new product",
@@ -28,7 +20,7 @@ const Product: Product[] = [
     category: "baby bottle",
   },
   {
-    id: 3,
+    id: "3",
     title: "product 3",
     image: "https://blocks.astratic.com/img/general-img-landscape.png",
     description: "new product",
@@ -37,7 +29,7 @@ const Product: Product[] = [
     category: "baby bottle",
   },
   {
-    id: 4,
+    id: "4",
     title: "product 4",
     image: "https://blocks.astratic.com/img/general-img-landscape.png",
     description: "new product",
@@ -46,7 +38,7 @@ const Product: Product[] = [
     category: "baby bottle",
   },
   {
-    id: 5,
+    id: "5",
     title: "product 5",
     image: "https://blocks.astratic.com/img/general-img-landscape.png",
     description: "new product",
@@ -56,4 +48,4 @@ const Product: Product[] = [
   },
 ];
 
-export default Product;
+export default products;
