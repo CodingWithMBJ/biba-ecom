@@ -7,9 +7,11 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { useTheme } from "../hooks/useTheme";
+import type { User } from "firebase/auth";
 
 type HeaderProps = {
   handleMenuToggle: () => void;
+  user: User | null;
 };
 
 const Header = ({ handleMenuToggle }: HeaderProps) => {

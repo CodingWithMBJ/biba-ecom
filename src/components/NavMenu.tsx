@@ -1,5 +1,5 @@
 import { auth } from "../services/firebaseConfig";
-import { signOut } from "firebase/auth";
+import { signOut, type User } from "firebase/auth";
 
 type NavMenuProps = {
   user: User | null;

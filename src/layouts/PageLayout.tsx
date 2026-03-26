@@ -2,9 +2,10 @@ import { Outlet } from "react-router-dom";
 import Header from "../components/Header";
 import NavMenu from "../components/NavMenu";
 import { useState } from "react";
+import type { User } from "firebase/auth";
 
 type PageLayoutProps = {
-  user: string | null;
+  user: User | null;
 };
 
 const PageLayout = ({ user }: PageLayoutProps) => {
